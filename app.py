@@ -86,7 +86,7 @@ def main():
             st.text("Original Image")
            
         if st.button("recognise"):
-            result_img = run.py(image_ori)
+            result_img =(image_ori)
             st.image(result_img)
             def open_py_file():
                 call(["python", "run.py"])
