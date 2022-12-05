@@ -80,13 +80,13 @@ def main():
         col1.caption("Upload an Image")
         image_ori = col1.file_uploader("Choose File", type = ['jpg', 'png', 'jpeg'])
         if image_ori is not None:
-            st.text("Original Image")
+            st.text("CAR IMAGE")
            
         if st.button("recognise"):
             result_img =(image_ori)
-            st.image(result_img) 
         def open_py_file():
          call(["python", "run.py"])
+        st.image(result_img) 
 
         open_py_file()
         col2.caption("Data")
