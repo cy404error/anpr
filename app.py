@@ -2,9 +2,10 @@
 import sqlite3
 import streamlit as st
 import pandas as pd
-
+from tensorflow import keras 
+from tensorflow.python.keras.models import Input
 st.set_page_config(page_title='ANPR', page_icon='car')
-
+#loaded_model = load_model('object_detection')
 ####### HIDE MENU AND FOOTER
 
 hide_menu_style = '''
@@ -82,7 +83,7 @@ def main():
         
         if st.button("recognise"):
            def object_detection (our_image):
-            st.image(image_file)
+            st.image(our_image)
 
         col2.caption("Data")
         col3.caption("Plate Number") 
