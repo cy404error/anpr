@@ -82,7 +82,7 @@ def main():
         
         if st.button("recognise"):
            def object_detection (our_image):
-            st.image(our_image)
+            st.image(image_file)
 
         col2.caption("Data")
         col3.caption("Plate Number") 
