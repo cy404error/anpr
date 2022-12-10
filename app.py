@@ -2,7 +2,6 @@
 import sqlite3
 import streamlit as st
 import pandas as pd
-from tensorflow import keras 
 from tensorflow.python.keras.models import Input
 from keras.models import load_model
 model = load_model('object_detection.h5')
