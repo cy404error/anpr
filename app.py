@@ -2,8 +2,10 @@
 import sqlite3
 import streamlit as st
 import pandas as pd
+import keras.models 
+import load_model
 st.set_page_config(page_title='ANPR', page_icon='car')
-
+model = load_model("object detection.h5")
 ####### HIDE MENU AND FOOTER
 
 hide_menu_style = '''
