@@ -3,8 +3,6 @@ import sqlite3
 import streamlit as st
 import pandas as pd
 st.set_page_config(page_title='ANPR', page_icon='car')
-from keras.models import load_model
-model = load_model("object_detection.h5")
 
 ####### HIDE MENU AND FOOTER
 
@@ -18,7 +16,6 @@ st.markdown(hide_menu_style, unsafe_allow_html=True)
 
 conn = sqlite3.connect('anpr.db')
 c = conn.cursor()
-
 
 def create_table():
     """Create a Table"""
@@ -37,6 +34,7 @@ def view_all_data():
     c.execute('SELECT * FROM registered')
     data = c.fetchall()
     return data
+
 
 def delete_data(Guard):
     """Delete data"""
@@ -76,17 +74,16 @@ def main():
     choice = st.sidebar.selectbox("Menu", menu)
     if choice == "Home":
         col1.caption("Upload an Image")
-        image_ori = col1.file_uploader("Choose File", type = ['jpg', 'png', 'jpeg'])
-        if image_ori is not None:
-            def object_detection(imgage_ori):
-        
-             if st.button("recognise"):
-                result_img =(image_ori)
-                st.image(result_img) 
-        
-        
+        image_file = col1.file_uploader("Choose File", type = ['jpg', 'png', 'jpeg'])
+        if image_file is not None:
+            our_image = (image_file)
+            st.text("Original Image")
+            st.image(our_image)
 
-        
+        if st.button("recognise"):
+            result_img = (our_image)
+            st.image(result_img)
+            
         col2.caption("Data")
         col3.caption("Plate Number")
         
@@ -141,3 +138,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
