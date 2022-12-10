@@ -2,9 +2,6 @@
 import sqlite3
 import streamlit as st
 import pandas as pd
-from subprocess import call
-
-
 st.set_page_config(page_title='ANPR', page_icon='car')
 
 ####### HIDE MENU AND FOOTER
@@ -19,7 +16,6 @@ st.markdown(hide_menu_style, unsafe_allow_html=True)
 
 conn = sqlite3.connect('anpr.db')
 c = conn.cursor()
-
 
 def create_table():
     """Create a Table"""
@@ -78,19 +74,16 @@ def main():
     choice = st.sidebar.selectbox("Menu", menu)
     if choice == "Home":
         col1.caption("Upload an Image")
-        image_ori = col1.file_uploader("Choose File", type = ['jpg', 'png', 'jpeg'])
-        if image_ori is not None:
-            st.text("CAR IMAGE")
-           
-        if st.button("recognise"):
-            result_img =(image_ori)
-            st.image(result_img) 
-        def open_py_file():
-          call(["python", "run.py"])
-          open_py_file()
-        
+        image_file = col1.file_uploader("Choose File", type = ['jpg', 'png', 'jpeg'])
+        if image_file is not None:
+            our_image = (image_file)
+            st.text("Original Image")
+            st.image(our_image)
 
-        
+        if st.button("recognise"):
+            result_img = (our_image)
+            st.image(result_img)
+            
         col2.caption("Data")
         col3.caption("Plate Number")
         
