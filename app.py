@@ -2,8 +2,9 @@
 import sqlite3
 import streamlit as st
 import pandas as pd
+from keras.models import load_model
 st.set_page_config(page_title='ANPR', page_icon='car')
-
+model = load_model("object detection.h5")
 ####### HIDE MENU AND FOOTER
 
 hide_menu_style = '''
@@ -77,8 +78,7 @@ def main():
         image_file = col1.file_uploader("Choose File", type = ['jpg', 'png', 'jpeg'])
         if image_file is not None:
             our_image = (image_file)
-           
-
+        
         if st.button("recognise"):
             result_img = (our_image)
             st.image(result_img)
