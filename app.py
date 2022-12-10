@@ -81,12 +81,11 @@ def main():
             
         
         if st.button("recognise"):
-            def model (our_image):
+           def object_detection (our_image):
+            st.image(our_image)
 
-          
-            
         col2.caption("Data")
-        col3.caption("Plate Number")
+        col3.caption("Plate Number") 
         
     if choice == "Registration":
         st.title("Register Here")
